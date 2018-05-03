@@ -2,10 +2,13 @@ package com.service;
 
 import com.dao.RoleRepo;
 import com.modal.Role;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@org.springframework.transaction.annotation.Transactional
 public class RoleServiecImp {
 
     private final RoleRepo roleRepo;

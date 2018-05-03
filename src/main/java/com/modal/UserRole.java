@@ -5,12 +5,9 @@ import javax.persistence.*;
 @Entity
 public class UserRole {
 
-
-
-
     Long id;
     User user;
-    Integer role;
+    Long role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,11 +30,11 @@ public class UserRole {
     }
 
     @Column(name = "user_role_id")
-    public Integer getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(Long role) {
         this.role = role;
     }
 }

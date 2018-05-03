@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta name="description" content="Free Web tutorials">
@@ -10,21 +12,21 @@
 <div class="container" style="margin-top: 100px;">
 <p>The meta elements of this document describe the document and its keywords.</p>
 
-<form action="/savePerson" method="get">
+<form:form action="/savePerson" method="post" modelAttribute="person">
     <div class="form-group">
         <label for="fname">First Name:</label>
-        <input type="text" name="fname" class="form-control" id="fname">
+        <form:input type="text" path="fname" name="fname" class="form-control" id="fname"/>
     </div>
     <div class="form-group">
         <label for="lanme">Last Name:</label>
-        <input type="text" class="form-control" name="lname" id="lanme">
+        <form:input type="text" path="lname" class="form-control" name="lname" id="lanme"/>
     </div>
     <div class="form-group">
         <label for="address">Address:</label>
-        <input type="address" class="form-control" name="address" id="address">
+        <form:input type="address" path="address" class="form-control" name="address" id="address"/>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</form:form>
     <a href="/getAll">Get All list</a>
     <a href="#" onclick="callAjax()">Get All list ajax</a>
 
@@ -33,6 +35,8 @@
     <div id="addressMank">
 
     </div>
+
+    <a href="<c:url value="/logout" />">Logout</a>
 
 
 </div>
@@ -47,7 +51,7 @@
     function callAjax() {
         $.ajax({
             url:  '/getResult',
-            type: 'POST',
+            type: 'GET',
             data: {id: "10"},
             success: function(html){
                 $("#addressMank").html(html);

@@ -23,7 +23,8 @@
 
 
 <div class="col-md-12">
-
+    <a href="<c:url value="/logout" />">Logout</a>
+    <a href="<c:url value="/show" />">Create Records</a>
     <table class="table">
         <thead>
         <tr>

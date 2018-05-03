@@ -8,7 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url value="/login" var="login" />
 <head>
     <title>Login V9</title>
     <meta charset="UTF-8">
@@ -32,16 +37,17 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/static/vendor/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<%--    <link rel="stylesheet" type="text/css" href="/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">--%>
     <!--===============================================================================================-->
 </head>
-<body>
+<body class="security-app">
 
 
-<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+<%--<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">--%>
+<div class="container-login100">
     <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <form class="login100-form validate-form">
+        <form class="login100-form validate-form" action="/index" method="post">
 				<span class="login100-form-title p-b-37">
 					Sign In
 				</span>
@@ -52,12 +58,14 @@
             </div>
 
             <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-                <input class="input100" type="password" name="pass" placeholder="password">
+                <input class="input100" type="password" name="password" placeholder="password">
                 <span class="focus-input100"></span>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}"
+                   value="${_csrf.token}" />
 
             <div class="container-login100-form-btn">
-                <button class="login100-form-btn">
+                <button type="submit" class="login100-form-btn">
                     Sign In
                 </button>
             </div>
